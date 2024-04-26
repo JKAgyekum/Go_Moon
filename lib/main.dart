@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Go_APP",
-      theme: ThemeData(scaffoldBackgroundColor:const Color.fromRGBO(31, 31, 31, 0)),
-      home:const HomePage(),
+      theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromRGBO(31, 31, 31, 0)),
+      home: Homepage(),
     );
   }
 }

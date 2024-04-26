@@ -1,38 +1,102 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_moon/widgets/dropdown_widgets.dart';
+
+class Homepage extends StatelessWidget {
+  late double _deviceHeight, _deviceWidth;
+
+  Homepage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    _deviceHeight = MediaQuery.of(context).size.height;
+    _deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: _pageTitle(),
-          color: Colors.blue,
+          height: _deviceHeight,
+          //color: Colors.red,
+          width: _deviceWidth,
+          padding: EdgeInsets.symmetric(
+              horizontal: _deviceHeight * 0.05, vertical: _deviceWidth * 0.05),
+          color: const Color.fromRGBO(56, 56, 56, 0.769),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _pageTitle(),
+              Expanded(child: 
+               _backgroundImage()),
+              _bookRide(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _pageTitle() {
-    return const Text(
-      'SpaceMan',
-      style: TextStyle(
-        fontSize: 62,
-        color: Colors.white,
-        fontWeight: FontWeight.w800,
-      ),
-    );
-  }
-
-  Widget _spaceyImageWidget() {
+  Widget _backgroundImage() {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/astro_moon.png"),
           fit: BoxFit.contain,
         ),
+        // shape: BoxShape.circle,
+        // color: Colors.red,
+      ),
+      // child: _pageTitle(),
+    );
+  }
+
+  Widget _pageTitle() {
+    return Container(
+        padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.05),
+        width: _deviceWidth,
+        child: const Text(
+          "Spaceman",
+          style: TextStyle(
+            fontSize: 60.8,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ));
+  }
+
+  Widget _dropdowndestination() {
+    return CustomDropDown(
+        values: const ['Kasoa Station', 'Madina Station', 'DNN Station'],
+        width: _deviceWidth);
+  }
+
+  Widget _travellersData() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        CustomDropDown(
+            values: const ['1', '2', '3'], width: _deviceWidth * 0.35),
+        CustomDropDown(
+            values: const ['Economy', 'Business', 'Elite'],
+            width: _deviceWidth * 0.40),
+      ],
+    );
+  }
+
+  Widget _bookRide() {
+    return Container(
+      height: _deviceHeight * 0.2,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [_dropdowndestination(), _travellersData()],
       ),
     );
   }
