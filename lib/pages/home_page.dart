@@ -22,7 +22,7 @@ class Homepage extends StatelessWidget {
           //color: Colors.red,
           width: _deviceWidth,
           padding: EdgeInsets.symmetric(
-              horizontal: _deviceHeight * 0.05, vertical: _deviceWidth * 0.05),
+              horizontal: _deviceHeight * 0.01, vertical: _deviceWidth * 0.01),
           color: const Color.fromRGBO(56, 56, 56, 0.769),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,8 +30,7 @@ class Homepage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _pageTitle(),
-              Expanded(child: 
-               _backgroundImage()),
+              // Expanded(child: _backgroundImage()),
               _bookRide(),
             ],
           ),
@@ -45,7 +44,7 @@ class Homepage extends StatelessWidget {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/astro_moon.png"),
-          fit: BoxFit.contain,
+          fit: BoxFit.none,
         ),
         // shape: BoxShape.circle,
         // color: Colors.red,
@@ -96,7 +95,31 @@ class Homepage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_dropdowndestination(), _travellersData()],
+        children: [
+          _dropdowndestination(),
+          _travellersData(),
+          _rideButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _rideButton() {
+    return Container(
+      margin: EdgeInsets.only(bottom: _deviceHeight * 0.01),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      width: _deviceWidth,
+      child: MaterialButton(
+        onPressed: () {},
+        child: const Text(
+          "Book Ride",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
     );
   }
