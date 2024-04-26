@@ -30,7 +30,7 @@ class Homepage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _pageTitle(),
-              // Expanded(child: _backgroundImage()),
+              Expanded(child: _backgroundImage()),
               _bookRide(),
             ],
           ),
@@ -43,8 +43,9 @@ class Homepage extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/astro_moon.png"),
-          fit: BoxFit.none,
+          image: AssetImage("assets/images/spaceman.png"),
+          //image: AssetImage("assets/images/astro_moon.png"),
+          fit: BoxFit.contain,
         ),
         // shape: BoxShape.circle,
         // color: Colors.red,
@@ -88,6 +89,27 @@ class Homepage extends StatelessWidget {
     );
   }
 
+  Widget _rideButton() {
+    return Container(
+      margin: EdgeInsets.only(bottom: _deviceHeight * 0.01),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
+      width: _deviceWidth,
+      child: MaterialButton(
+        onPressed: () {},
+        // color: Colors.yellow,
+        child: const Text(
+          "Book Ride",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _bookRide() {
     return Container(
       height: _deviceHeight * 0.2,
@@ -100,26 +122,6 @@ class Homepage extends StatelessWidget {
           _travellersData(),
           _rideButton(),
         ],
-      ),
-    );
-  }
-
-  Widget _rideButton() {
-    return Container(
-      margin: EdgeInsets.only(bottom: _deviceHeight * 0.01),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-      ),
-      width: _deviceWidth,
-      child: MaterialButton(
-        onPressed: () {},
-        child: const Text(
-          "Book Ride",
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
       ),
     );
   }
