@@ -70,8 +70,9 @@ class Homepage extends StatelessWidget {
 
   Widget _dropdowndestination() {
     return CustomDropDown(
-        values: const ['Kasoa Station', 'Madina Station', 'DNN Station'],
-        width: _deviceWidth);
+      values: const ['Kasoa Station', 'Madina Station', 'DNN Station'],
+      width: _deviceHeight,
+    );
   }
 
   Widget _travellersData() {
