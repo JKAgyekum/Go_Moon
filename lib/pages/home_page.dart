@@ -24,14 +24,21 @@ class Homepage extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: _deviceHeight * 0.01, vertical: _deviceWidth * 0.01),
           color: const Color.fromRGBO(56, 56, 56, 0.769),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
-              _pageTitle(),
-              Expanded(child: _backgroundImage()),
-              _bookRide(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _pageTitle(),
+                  _bookRide(),
+                ],
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: _backgroundImage(),
+              ),
             ],
           ),
         ),
@@ -41,10 +48,12 @@ class Homepage extends StatelessWidget {
 
   Widget _backgroundImage() {
     return Container(
+      height: _deviceHeight * 0.65,
+      width: _deviceWidth * 0.65,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/spaceman.png"),
-          //image: AssetImage("assets/images/astro_moon.png"),
+          // image: AssetImage("assets/images/spaceman.png"),
+          image: AssetImage("assets/images/astro_moon.png"),
           fit: BoxFit.contain,
         ),
         // shape: BoxShape.circle,
@@ -59,7 +68,7 @@ class Homepage extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.05),
         width: _deviceWidth,
         child: const Text(
-          "Spaceman",
+          "##Spaceman",
           style: TextStyle(
             fontSize: 60.8,
             fontWeight: FontWeight.bold,
@@ -113,7 +122,7 @@ class Homepage extends StatelessWidget {
 
   Widget _bookRide() {
     return Container(
-      height: _deviceHeight * 0.2,
+      height: _deviceHeight * 0.21,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
