@@ -19,7 +19,6 @@ class Homepage extends StatelessWidget {
       body: SafeArea(
         child: Container(
           height: _deviceHeight,
-          //color: Colors.red,
           width: _deviceWidth,
           padding: EdgeInsets.symmetric(
               horizontal: _deviceHeight * 0.01, vertical: _deviceWidth * 0.01),
@@ -48,7 +47,7 @@ class Homepage extends StatelessWidget {
 
   Widget _backgroundImage() {
     return Container(
-      height: _deviceHeight * 0.65,
+      height: _deviceHeight * 0.52,
       width: _deviceWidth * 0.65,
       decoration: const BoxDecoration(
         image: DecorationImage(
